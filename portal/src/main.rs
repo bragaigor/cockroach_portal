@@ -1,5 +1,10 @@
-fn main() {
-    println!("Hello, world!");
+use anyhow::Result;
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    println!("Hello transformers!!");
+
+    Ok(())
 }
 
 #[cfg(test)]

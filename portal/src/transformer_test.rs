@@ -25,18 +25,18 @@ pub mod tests {
             power: 1000
         };
         let transformer2 = TransformerInput {
-            title: "Bumblebee".to_owned(),
+            title: "Megatron".to_owned(),
             power: 3000
         };
         let transformer3 = TransformerInput {
-            title: "Bumblebee".to_owned(),
+            title: "Metroplex".to_owned(),
             power: 5000
         };
 
         // If we try to create a transaction by uncommenting the below 2 comments
         // We get an error from CockroachDB "unimplemented: multiple active portals not supported"
-        // >>>>>>>>>>>>>>>>
-        // sqlx::query("BEGIN;").execute(&mut dbc).await?;
+
+        // sqlx::query("BEGIN;").execute(&mut dbc).await?; // <<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         let _result_id = add_transformer(&mut dbc, transformer).await?;
         let _result_id = add_transformer(&mut dbc, transformer2).await?;
@@ -44,7 +44,7 @@ pub mod tests {
 
         let transformers = get_transformers(&mut dbc).await?;
 
-        // sqlx::query("COMMIT;").execute(&mut dbc).await?;
+        // sqlx::query("COMMIT;").execute(&mut dbc).await?; // <<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         println!("Transformers: {:?}", transformers);
 
