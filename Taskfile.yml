@@ -1,0 +1,11 @@
+version: "3"
+
+output: prefixed
+
+tasks:
+  initroach:
+    dir: portal/sql
+    cmds:
+      - DATABASE_URL="postgres://root:postgres@localhost:26257/reflector_test" sqlx database drop -y
+      - DATABASE_URL="postgres://root:postgres@localhost:26257/reflector_test" sqlx database create
+      - DATABASE_URL="postgres://root:postgres@localhost:26257/reflector_test" sqlx migrate run
