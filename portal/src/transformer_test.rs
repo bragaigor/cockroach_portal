@@ -36,7 +36,7 @@ pub mod tests {
         // If we try to create a transaction by uncommenting the below 2 comments
         // We get an error from CockroachDB "unimplemented: multiple active portals not supported"
 
-        // sqlx::query("BEGIN;").execute(&mut dbc).await?; // <<<<<<<<<<<<<<<<<<<<<<<<<<<
+        sqlx::query("BEGIN;").execute(&mut dbc).await?; // <<<<<<<<<<<<<<<<<<<<<<<<<<<
 
         let _result_id = add_transformer(&mut dbc, transformer).await?;
         let _result_id = add_transformer(&mut dbc, transformer2).await?;

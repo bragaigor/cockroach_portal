@@ -94,13 +94,13 @@ pub async fn add_transformer(dbc: &mut DBConn, transformer_input: TransformerInp
         )
         .bind(transformer_input.title)
         .bind(transformer_input.power)
-        .fetch_one(&mut *dbc)
+        .fetch_all(&mut *dbc)
         .await {
             Ok(r) => r,
             Err(error) => {panic!("add_transformer ERROR. Could not insert to DB: {:?}", error);}
         };
 
-    Ok(result.id)
+    Ok(result[0].id)
 }
 
 /// Get all issue occurrences on hour basis interval
